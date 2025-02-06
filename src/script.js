@@ -65,16 +65,63 @@ function addTodo(sno = 1, value) {
 }
 
 
-function getTodos(){
+function getTodos() {
   fetch("http://4.240.85.243:3000/todos")
     .then((response) => response.json())
     .then((result) => {
       todos = result.todos;
-      todos.map((value,key)=>{
-        addTodo(key+1,value.title)
+      todos.map((value, key) => {
+        addTodo(key + 1, value.title)
       })
     })
     .catch((error) => console.error(error));
 }
 
+
+function add(title) {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    "title": title,
+    "description": "this is my fifth description"
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+  };
+
+  fetch("http://4.240.85.243:3000/todos", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      getTodos()
+    })
+    .catch((error) => console.error(error));
+}
+
+
+function addButton(){
+
+  let input = document.getElementById("todo-input")
+  if(input.value==""){
+    return;
+  }
+  add(input.value)
+
+  input.value = "";
+}
+
+
 getTodos()
+
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
+// add("this is my 6th title")
