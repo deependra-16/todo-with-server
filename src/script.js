@@ -2,10 +2,10 @@ let todos = [];
 
 
 // to create the todo row
-function addTodo(sno = 1, value) {
+function addTodo(sno = 1, value) { 
   let container = document.getElementById("main-container")
 
-  //created parent row
+  //created parent row1 
   let parentDiv = document.createElement("div")
   parentDiv.classList.add('row')
   parentDiv.classList.add('align-items-center')
@@ -81,12 +81,14 @@ function getTodos() {
 
 
 function add(title) {
+  // let mainContainer = document.getElementById("main-container")
+  // mainContainer.innerHTML = ""
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
   const raw = JSON.stringify({
-    "title": "",
-    "description": ""
+    "title": "title",
+    "description": "description",
   });
 
   const requestOptions = {
